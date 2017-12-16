@@ -1,0 +1,51 @@
+## min
+*.min.js
+*.min.css
+
+## Python
+__pycache__/
+*.py[cod]
+*.egg*
+.coverage
+
+## Project
+local_settings.py
+public/static
+public/media
+migrations/
+
+## SQLite3
+*.sqlite3
+
+## OS
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+## Sphinx
+build
+
+## Logs
+*.log
+
+## Editors and IDEs
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+.idea/
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+.buildpath
+.project
+.settings
+.pydevproject
+
+## pipenv
+Pipfile
+Pipfile.lock

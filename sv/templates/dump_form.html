@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load sv_extras %}
+{% block link_home_class %} active{% endblock %}
+{% block base_content %}
+
+<div class="container">
+
+<div class="row">
+<div class="container" id="form_container">
+    <form action='/' method='post'>
+    {% csrf_token %}
+    {% bootstrap_form paste_area %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">
+        <i class="fa fa-star-o" aria-hidden="true"></i> Search
+    </button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-clipboard" aria-hidden="true"></i> Sample data
+        </button>
+    {% endbuttons %}
+    </form>
+</div>
+</div><!--row-->
+
+<div class="row" id="footer_row">
+        <div class="col-md-6">
+        <table class="table-sm table-striped">
+        <thead class="thead-default">
+            <tr>
+                <td align="right">Gen</td>
+				<td align="right">6</td>
+				<td align="right">7</td>
+			</tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align="left">Unique TSVs</td>
+				<td align="right">{{ uniques6 }}</td>
+				<td align="right">{{ uniques7 }}</td>
+			</tr>
+            <tr>
+                <td align="right"><i class="fa fa-bar-chart" aria-hidden="true"></i></td>
+				<td align="right">{{ uniques6|as_percentage_of:4096 }}</td>
+				<td align="right">{{ uniques7|as_percentage_of:4096 }}</td>
+			</tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Try it out!</h4>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      </div>
+      <div class="modal-body">
+        {% include "sample_body.html" %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

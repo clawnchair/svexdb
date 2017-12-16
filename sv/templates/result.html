@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load sv_extras %}
+{% load static from staticfiles %}
+{% block base_title %}SVeX.db results{% endblock %}
+
+{% block base_content %}
+
+<div class="row-fluid">
+<div class="col-lg-12">
+
+{% if total %}
+    <div class="alert alert-success">
+{% else %}
+    <div class="alert alert-info">
+{% endif %}
+        Gen {{ gen|gen_format }} - Found <b>{{ unique }}</b> matching egg{{ unique|pluralize }};
+            <b>{{ total }}</b> matching trainer{{ total|pluralize }} total.
+    </div> <!--top alert-->
+
+<div class="table-responsive">
+<table class="table table-lg table-hover">
+    <thead class="thead-default">
+        <tr>
+            <th>Dump output</th>
+            <th>Username</th>
+            <th><a href="#" data-toggle="tooltip" title="Time since user's most recent comment in their TSV thread">Last seen</a></th>
+            <th><a href="#" data-toggle="tooltip" title="Time since oldest pending hatch request was made">Pending</a></th>
+            <th>TSV</th>
+        </tr>
+    </thead>
+    <tbody style="font-size: 14px">
+    {% for item in item_list %}
+        {% if item.username %}
+            {% if item.completed %}
+                <tr class="table-warning">
+            {% else %}
+                <tr class="table-success">
+            {% endif %}
+        {% elif item.source %}
+            <tr class="info">
+        {% else %}
+        <tr>
+        {% endif %}
+
+            <td>{% if item.iv %}<b>{% endif %}
+                    {{ item.copied_str }}
+                {% if item.iv %}</b>{% endif %}
+            </td>
+            <td>{% if item.username %}
+                    <a title="{{ item.flair_text }}" href="https://www.reddit.com/user/{{ item.username }}">{{ item.username }}</a> {% if item.main_flair %}<span class="{{ item.main_flair|flair_format }}"></span>{% endif %}{% if item.ribbon_flair %}<span class="{{ item.ribbon_flair|flair_format }}"></span>{% endif %}
+                {% elif item.source %}
+                    {{ item.source }}
+                {% endif %}
+            </td>
+            <td>{% if item.last_seen %}{{ item.last_seen|delta_format }}{% endif %}</td>
+            <td>{% if item.pending %}{{ item.pending|delta_format }}{% endif %}</td>
+            <td>
+                {% if item.username %}
+                    <a href="{{ item.sub_id|tsv_url:item.sv }}">{% if item.archived %}<i class="fa fa-archive" aria-hidden="true"></i>{% else %}<i class="fa fa-external-link-square" aria-hidden="true"></i>{% endif %}</a>
+                {% elif item.source %}
+                    <a href="#more" data-toggle="modal" data-nridx="{{ item.index }}" data-nrsubidx="{{ item.sub_index }}">{{ item.sv }}</a>
+                {% else %}
+                    {% if item.sv %}
+                    <a href="{{ item.sv|rdt_search_url }}"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    {% endif %}
+                {% endif %}
+            </td>
+
+        </tr>
+      {% endfor %}
+    </tbody>
+
+</table>
+</div> <!--table-->
+
+
+
+
+{% if exceeded %}
+    <div class="alert alert-warning">900 egg limit reached.</div>
+{% endif %}
+
+
+
+{% if multiples %}
+<div class="row">
+<div class="col-md-3">
+        <div class="panel panel-info">
+          <!-- Default panel contents -->
+          <div class="panel-heading">Trainers with multiple matches</div>
+          <!-- Table -->
+          <table class="table table-sm table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-6">Username</th>
+                    <th class="col-md-2">Hits</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in multiples %}
+                <tr>
+                    <td>{{ u.username }}</td>
+                    <td>{{ u.count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+</div> <!--col-md3-->
+</div> <!--row-->
+{% endif %}
+</div> <!--big col-->
+</div> <!--row-->
+
+<div class="modal fade" id="more">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h5 class="modal-title" id="mod_title">Egg</h5>
+      </div>
+      <div class="modal-body" id="mod_tbl_body">
+          <table class="table table-sm table-bordered table-hover">
+        <tr><td>Something</td><td>went wrong</td></tr>
+    </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+    var data_ = jQuery.parseJSON('{{nonreddit|safe}}');
+</script>
+<script type="text/javascript" src={% static "js/nonreddit.js" %}></script>
+
+{% endblock %}

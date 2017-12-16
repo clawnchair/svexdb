@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load sv_extras %}
+{% load static from staticfiles %}
+{% block link_tabler_class %} active{% endblock %}
+{% block base_title %}SVeX.db ESV Table Formatter{% endblock %}
+
+{% block base_content %}
+
+<div class="row">
+<div class="form-group col-md-7">
+<form>
+	<textarea class="form-control" id="dump" rows="15" placeholder="paste default formatted output"></textarea><br>
+    <label for="filler">Empty slot filler:</label>
+    <input type="filler" class="form-control" id="filler" value="----">
+</form>
+<br>
+<button type="submit" class="btn btn-primary" onclick="formatOutput('result', 'filler')">Submit</button>
+</div>
+
+<div class="card col-md-5" style="font-size: 14px">
+	<samp id="result">
+        Formats dump output into ESV-only Reddit tables:<br>
+        # Box 01<br>
+        | B01 | C1 | C2 | C3 | C4 | C5 | C6 |<br>
+        |:--:|:--:|:--:|:--:|:--:|:--:|:--:|<br>
+        |**R1**| ---- | ---- | ---- | ---- | ---- | ---- |<br>
+        |**R2**| ---- | ---- | ---- | ---- | ---- | ---- |<br>
+        |**R3**| ---- | ---- | ---- | ---- | ---- | ---- |<br>
+        |**R4**| ---- | ---- | ---- | ---- | ---- | ---- |<br>
+        |**R5**| ---- | ---- | ---- | ---- | ---- | ---- |
+	</samp>
+</div>
+</div>
+<script type="text/javascript" src={% static "js/esv_tabler.js" %}></script>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+{% bootstrap_javascript %}
+{% bootstrap_css %}
+
+{% load static from staticfiles %}
+<html{% if request.LANGUAGE_CODE %} lang="{{ request.LANGUAGE_CODE }}"{% endif %}>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block bootstrap4_title %}SVeX.db{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="{% static "img/favicon.ico" %}">
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+    <link rel="stylesheet" href={% static "css/base.css" %} />
+</head>
+
+<body>
+<div class="row-fluid">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark"><div class="container">
+    <a class="navbar-brand" href="">SVeX.db <span class="egg-flair flair-egg"></span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navi" aria-controls="navi" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navi">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item{% block link_home_class %}{% endblock %}">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.reddit.com/r/SVExchange">r/SVExchange</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.reddit.com/r/SVExchange/wiki/quickstart/">New Users</a>
+          </li>
+          <li class="nav-item{% block link_tabler_class %}{% endblock %}">
+            <a class="nav-link" href="/formatter">ESV Formatter</a>
+          </li>
+
+        </ul>
+    </div></div>
+  </nav>
+</div>
+
+<div class="container" id="content_block">
+<div class="card-body">
+{% block base_content %}django-bootstrap4 template content{% endblock %}
+</div>
+</div>
+
+</body>
+
+</html>

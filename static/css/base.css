@@ -1,0 +1,99 @@
+.egg-flair {
+    display:inline-block;
+    height:22px;
+    width:22px;
+    background:url('../img/egg_flair_sprites.png') no-repeat;
+    vertical-align: middle;
+    pointer-events: none;
+}
+
+.flair-lucky {
+    background-position: 0px 0;
+}
+
+.flair-egg {
+    background-position: -22px 0;
+}
+
+.flair-eevee {
+    background-position: -44px 0;
+}
+
+.flair-togepi {
+    background-position: -66px 0;
+}
+
+.flair-torchic {
+    background-position: -88px 0;
+}
+
+.flair-pichu {
+    background-position: -110px 0;
+}
+
+.flair-manaphy {
+    background-position: -132px 0;
+}
+
+.flair-eggcup {
+    background-position: -154px 0;
+}
+
+.sp-flair {
+    display:inline-block;
+    height:30px;
+    width:40px;
+    background:url('../img/special_flair_sprites.png') no-repeat;
+    vertical-align: middle;
+    pointer-events: none;
+}
+
+.flair-chatot{background-position:0px 0;margin:-3px -5px 0px -10px}
+.flair-atomic{background-position:-40px 0;margin:-3px -9px -1px -8px}
+.flair-totodile{background-position:-80px 0;margin:-5px -7px 2px -10px}
+.flair-dragonair{background-position:-120px 0;margin:-1px -5px -2px -7px}
+.flair-jellicent-shiny{background-position:-160px 0;margin:-1px -3px -1px -5px}
+.flair-m-altaria-shiny{background-position:-200px 0;margin:-3px -2px -1px -7px}
+.flair-dragonite{background-position:-240px 0;margin:-1px -4px 0 -6px}
+.flair-ughhhhhh{background-position:-280px 0;margin:-5px -3px -2px -7px}
+.flair-jude{background-position:-320px 0;margin:-2px -1px -1px -4px}
+.flair-magnezone-shiny{background-position:-360px 0;margin:-1px -3px 0 -5px}
+.flair-nsy{background-position:-400px 0;margin:0px -5px -1px -8px}
+.flair-porygon-z-shiny{background-position:-440px 0;margin:-2px -5px 0 -9px}
+.flair-porygon{background-position:-480px 0;margin:-5px -12px 0px -10px}
+.flair-porygon2{background-position:-520px 0;margin:-5px -5px 0px -10px}
+.flair-serperior-shiny{background-position:-560px 0;margin:-1px -4px -2px -4px}
+.flair-slowpoke{background-position:-600px 0;margin:-5px -6px 0px -9px}
+.flair-greninja-shiny{background-position:-640px 0;margin:-5px 0px 1px -4px}
+.flair-rod{background-position:-680px 0;margin:-1px -3px -3px -8px}
+.flair-mudkip-shiny{background-position:-720px 0;margin:-2px -6px -4px -8px}
+.flair-alder{background-position:-760px 0;margin:-2px -6px -1px -10px}
+.flair-azumarill-shiny{background-position:-800px 0;margin:0 -2px -1px -8px}
+.flair-nidoking{background-position:-840px 0;margin:0 0 -3px -3px}
+.flair-magikarp-shiny{background-position:-880px 0;margin:-1px -5px 0 -9px}
+.flair-kaph{background-position:-920px 0;margin:-1px -5px 0 -9px}
+.flair-rhyhorn-shiny{background-position:-960px 0;margin:-3px -5px -2px -7px}
+
+.ribbon-flair {
+    display:inline-block;
+    height:22px;
+    width:22px;
+    background:url('../img/ribbon_flair_sprites.png') no-repeat;
+    vertical-align: middle;
+    pointer-events: none;
+}
+
+.flair-cuteribbon{background-position:0 0;margin-right:-2px}
+.flair-coolribbon{background-position:-22px 0;margin:0 -1px 2px 1px}
+.flair-beautyribbon{background-position:-44px 0;margin-left:3px}
+.flair-smartribbon{background-position:-66px 0;margin:0 0 -2px 3px}
+.flair-toughribbon{background-position:-88px 0;margin:0 0 -2px 3px}
+
+
+/* Not flair related */
+#id_paste {
+    height:60vh
+}
+.fa-archive, .fa-external-link-square, .fa-search {
+    font-size: 120%
+}
